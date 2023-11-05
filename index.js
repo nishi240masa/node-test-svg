@@ -28,6 +28,24 @@ app.get('/generate-svg', function (req, res,next)  {
   </svg>`);
 });
 
+const gifPath = 'https://blog-imgs-154.fc2.com/m/a/p/maplab/cat-black-animated-1.gif';
+
+// ルートエンドポイント
+app.get('/api/gif', (req, res) => {
+  // サーバー上のGIF画像を読み込み、ブラウザに送信
+  fs.readFile(gifPath, (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Internal Server Error');
+    } else {
+      // レスポンスヘッダーを設定してGIF画像を送信
+      res.header('Content-Type', 'image/gif');
+      res.status(200).send(data);
+    }
+  });
+});
+
+
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
 });

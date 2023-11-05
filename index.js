@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+const fs = require('fs');
+
 
 const port = 3000; // 使用するポート番号を指定
 
@@ -28,7 +30,7 @@ app.get('/generate-svg', function (req, res,next)  {
   </svg>`);
 });
 
-const gifPath = 'https://blog-imgs-154.fc2.com/m/a/p/maplab/cat-black-animated-1.gif';
+const gifPath = './cat.gif'; // サーバー上のGIF画像のパス
 
 // ルートエンドポイント
 app.get('/api/gif', (req, res) => {

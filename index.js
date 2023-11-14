@@ -1,11 +1,20 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 
-const fs = require('fs');
+app.use(bodyParser.json()); // JSON形式のデータを受け取る設定
+
 
 
 const port = 3000; // 使用するポート番号を指定
 
+// // ルートエンドポイント
+// app.post('/api/users', (req, res) => {
+//   console.log(req.body); // リクエストボディを出力
+//   res.status(200).json({
+//     message: 'ユーザーを作成しました'
+//   });
+// });
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
